@@ -23,7 +23,7 @@ namespace :puma do
         else
           within current_path do
             with rack_env: fetch(:puma_env) do
-              execute :pumad, "-C #{fetch(:puma_conf)}"
+              execute :pumactl, "-S #{fetch(:puma_state)} -F #{fetch(:puma_conf)} start"
             end
           end
         end
